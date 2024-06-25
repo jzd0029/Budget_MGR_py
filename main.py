@@ -1,16 +1,32 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import pandas as pd
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def read_csv_file(csv_path):
+    # Read the CSV file into a DataFrame
+    df = pd.read_csv(csv_path, skiprows=[0, 1, 2])
+    return df
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    csv_path = "Redstone_exports/June.csv"  # Replace with your CSV file path
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Read and parse the CSV file
+    df = read_csv_file(csv_path)
+
+    # Display the DataFrame
+    print("DataFrame:")
+    print(df)
+
+    # Access a specific column
+    column_name = "Balance"  # Replace with the column name you want to access
+    print(f"\nContents of column '{column_name}':")
+    print(df[column_name])
+
+    # Access a specific row by index
+    row_index = 0  # Replace with the row index you want to access
+    print(f"\nContents of row at index {row_index}:")
+    print(df.iloc[row_index])
+
+
+if __name__ == "__main__":
+    main()
